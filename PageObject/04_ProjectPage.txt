@@ -1,0 +1,82 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+# TODO: Write Dcocumentation e.g. Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+Documentation	
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	 Open browser
+Post Condition	 Close Browser
+Tags
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Project creation field variables
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Create blank project
+	Navigate To  https://gitlab.com/projects/new#blank_project
+    Input ProjectName    ProjectName
+    Input ProjectURL    ProjectURL
+	Input ProjectSlug	ProjectSlug 
+	Deployment Target	Select variable 
+	Visibility Level	Select variable 
+	Project Config		Select variable 
+	Submit Create Project
+   
+
+	Create template project 
+	Navigate To https://gitlab.com/projects/new#create_from_template
+	Template 	Select variable
+	Input ProjectName    ProjectName
+	Input ProjectURL    ProjectURL
+	Input ProjectSlug	ProjectSlug
+	Project Description	
+	Visibility Level	Select variable 
+	Submit Create Project
+
+	Update name of template project
+	Navigate to	https://gitlab.com/jamessofttest/james-test-project
+	...
+
+
+	Delete template project
+	Navigate to https://gitlab.com/dashboard/groups
+	Options		Delete 
+	Delete Group	Delete
+	Input Confirmation Required		jamessofttest
+	Confirm 
+
+
+
+	Valide that message is showing Project 'First project ' was successfully created.
+
+# Negative Test examples are below write test process steps for each below test case
+
+	Create a blank project with the previous same name
+	Navigate To  https://gitlab.com/projects/new#blank_project
+    Input ProjectName    jamessofttest
+    Input ProjectURL    jamessofttest
+	Input ProjectSlug	jamessofttest 
+	Deployment Target	Select variable 
+	Visibility Level	Select variable 
+	Project Config		Select variable 
+	Submit Create Project
+	Verify That Error message should show Project with the previous same name

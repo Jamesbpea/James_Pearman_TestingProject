@@ -1,0 +1,77 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+# TODO: Write Documentation e.g. User Registration Test scenario with verification, valid and invalid credentials.
+
+Test for Register page into the application 
+Given: A valid username and password for the web application 
+When: User enters the username and password
+Then: the user should be able to log in to the application successfully. The Home page for the application should be displayed.	
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	Open browser
+Post Condition	close browser
+Tags
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Registration field variables
+
+LoginUrl = https://gitlab.com/users/sign_up
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps (Think about possible test cases)
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Register user with valid username and password 
+	Login With Valid Credential
+    Navigate To Login Page  LoginUrl
+    Input Username  UserName
+    Input Password  Password
+    Submit Login Form
+    Verify Page Should Contain Register page	  
+
+# Negative Test examples keywords are below write test process steps for each below test case 
+
+	Register user with same above username,
+		...empty password,
+		...invalid email,
+		...Without recaptcha,
+
+
+Error message Should Be Visible After Invalid Login With Empty And Space
+    Navigate To Login Page  LoginUrl
+    Input Username    UserName
+    Input Password    Empty
+    Submit Login Form
+    Verify That Error message should show Password field is required.
+    
+
+Error message Should Be Visible After Invalid Login With Invalid Email And Valid Password
+    Navigate To Login Page  LoginUrl
+    Input Email    Invalid_Email
+    Input Password    Password
+    Submit Login Form
+    Verify Page Should Contain Invalid Email.
+    
+Error message Should Be Visible After Invalid Login Without recaptcha
+    Navigate To Login Page  LoginUrl
+    Input Username    Username
+    Input Password    Password
+    Submit Login Form
+    Verify That Error message should show recaptcha field is required.
+        
+
